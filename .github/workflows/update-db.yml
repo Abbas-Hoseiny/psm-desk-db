@@ -1,0 +1,75 @@
+name: 🔄 BVL Datenbank Update
+
+on:
+  schedule:
+    - cron: "0 3 */2 * *"
+  workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Test-Modus (nur 1 Datensatz pro Endpunkt)"
+        required: false
+        default: "false"
+        type: boolean
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  update-database:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📂 Arbeitsverzeichnis erstellen
+        run: |
+          mkdir -p data/raw
+          mkdir -p data/transformed
+          mkdir -p data/compressed
+
+      - name: 🌐 BVL API abrufen
+        working-directory: scripts
+        run: |
+          if [ "${{ github.event.inputs.test_mode }}" == "true" ]; then
+            python fetch_bvl.py --test --output ../data
+          else
+            python fetch_bvl.py --output ../data
+          fi
+
+      - name: 🔄 Daten transformieren
+        working-directory: scripts
+        run: python transform.py
+
+      - name: 🗜️ Daten komprimieren
+        working-directory: scripts
+        run: python compress.py
+
+      - name: 📋 Manifest generieren
+        working-directory: scripts
+        run: python manifest.py
+
+      - name: 🧹 Temporäre Dateien aufräumen
+        run: |
+          rm -rf data/raw
+          rm -rf data/transformed
+          rm -rf data/compressed
+
+      - name: 📤 Änderungen committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "✅ Keine Änderungen"
+          else
+            TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+            git commit -m "🔄 BVL Update - ${TIMESTAMP}"
+            git push
+          fi
