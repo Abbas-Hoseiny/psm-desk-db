@@ -2,8 +2,12 @@ name: 🔄 BVL Datenbank Update
 
 on:
   schedule:
-    - cron: "0 3 */2 * *"
-  workflow_dispatch:
+    - cron: "0 3 */2 * *"  # Alle 2 Tage um 3:00 UTC
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch: 
     inputs:
       test_mode:
         description: "Test-Modus (nur 1 Datensatz pro Endpunkt)"
@@ -16,7 +20,7 @@ permissions:
   pages: write
   id-token: write
 
-jobs:
+jobs: 
   update-database:
     runs-on: ubuntu-latest
     steps:
@@ -36,40 +40,92 @@ jobs:
 
       - name: 🌐 BVL API abrufen
         working-directory: scripts
-        run: |
-          if [ "${{ github.event.inputs.test_mode }}" == "true" ]; then
-            python fetch_bvl.py --test --output ../data
+        run:  |
+          set -e  # Bei Fehler sofort abbrechen
+          echo "🚀 Starte BVL API Abruf..."
+          if [ "${{ github.event. inputs.test_mode }}" == "true" ]; then
+            python -u fetch_bvl.py --test --output ../data
           else
-            python fetch_bvl.py --output ../data
+            python -u fetch_bvl.py --output ../data
           fi
+          echo "✅ fetch_bvl.py erfolgreich abgeschlossen"
+
+      - name: ✅ Rohdaten validieren
+        run: |
+          echo "🔍 Prüfe Rohdaten-Verzeichnis..."
+          
+          if [ !  -d "data/raw" ]; then
+            echo "❌ FEHLER: Verzeichnis data/raw existiert nicht!"
+            exit 1
+          fi
+          
+          FILE_COUNT=$(find data/raw -name "*.json" -type f 2>/dev/null | wc -l)
+          
+          if [ "$FILE_COUNT" -eq 0 ]; then
+            echo "❌ FEHLER: Keine JSON-Dateien in data/raw gefunden!"
+            echo ""
+            echo "Der fetch_bvl.py Schritt hat keine Daten erzeugt."
+            echo ""
+            echo "Mögliche Ursachen:"
+            echo "  - config.py fehlt oder ist fehlerhaft"
+            echo "  - BVL API ist nicht erreichbar"
+            echo "  - Netzwerkfehler beim Abrufen der Daten"
+            echo "  - API-Rate-Limit erreicht"
+            echo ""
+            echo "Verzeichnisinhalt:"
+            ls -la data/raw/ || echo "Kann nicht aufgelistet werden"
+            exit 1
+          fi
+          
+          echo "✅ $FILE_COUNT JSON-Dateien gefunden:"
+          ls -lh data/raw/*.json
+          
+          TOTAL_SIZE=$(du -sh data/raw | cut -f1)
+          echo "📊 Gesamtgröße: $TOTAL_SIZE"
 
       - name: 🔄 Daten transformieren
-        working-directory: scripts
-        run: python transform.py
+        working-directory:  scripts
+        run: |
+          set -e
+          echo "🔄 Starte Datentransformation..."
+          python -u transform.py
+          echo "✅ Transformation erfolgreich"
 
       - name: 🗜️ Daten komprimieren
         working-directory: scripts
-        run: python compress.py
+        run: |
+          set -e
+          echo "🗜️ Starte Komprimierung..."
+          python -u compress.py
+          echo "✅ Komprimierung erfolgreich"
 
       - name: 📋 Manifest generieren
-        working-directory: scripts
-        run: python manifest.py
+        working-directory:  scripts
+        run: |
+          set -e
+          echo "📋 Generiere Manifest..."
+          python -u manifest.py
+          echo "✅ Manifest erstellt"
 
       - name: 🧹 Temporäre Dateien aufräumen
         run: |
+          echo "🧹 Räume temporäre Dateien auf..."
           rm -rf data/raw
           rm -rf data/transformed
           rm -rf data/compressed
+          echo "✅ Aufräumen abgeschlossen"
 
       - name: 📤 Änderungen committen
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.email "github-actions[bot]@users. noreply.github.com"
           git add data/
+          
           if git diff --staged --quiet; then
-            echo "✅ Keine Änderungen"
+            echo "✅ Keine Änderungen zu committen"
           else
             TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
             git commit -m "🔄 BVL Update - ${TIMESTAMP}"
             git push
+            echo "✅ Änderungen erfolgreich gepusht"
           fi
