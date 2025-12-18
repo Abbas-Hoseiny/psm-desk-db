@@ -13,8 +13,8 @@ DEFAULT_LIMIT = 1000
 MAX_RETRIES = 3
 RETRY_DELAY = 2  # Sekunden
 
-# Output-Verzeichnis
-DATA_DIR = "data"
+# Output-Verzeichnis (relativ zum scripts/ Ordner)
+DATA_DIR = "../data"
 
 # ============================================================================
 # 25 ENDPUNKTE (Variante B: Kern + Wichtig)
