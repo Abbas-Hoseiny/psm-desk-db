@@ -1,133 +1,133 @@
 {
-  "version": "2026-03-07",
-  "generated": "2026-03-07T04:30:07.892481+00:00",
+  "version": "2026-03-09",
+  "generated": "2026-03-09T05:01:52.215831+00:00",
   "endpoints": 25,
   "total_records": 427224,
   "total_size_kb": 129.38,
   "files": {
     "adresse.json.gz": {
       "count": 671,
-      "checksum": "sha256:5988a9035fdbbff6524912408e0e2ccfcf231b982f530d6be1fdda08d27a9a6d",
+      "checksum": "sha256:97489323cc25314181f7ca563da44be40d20b95ceb861b48377567d2849b1006",
       "size_kb": 0.46
     },
     "auflagen.json.gz": {
       "count": 126160,
-      "checksum": "sha256:cf6359e24d14067dea926feeb515cd90d736aeb50e5c2d57cce7ccf6c475adc0",
+      "checksum": "sha256:bac62255cd9a5cc80eb99a90beeb45c7520281dbdb56be75fddcf1f28a51216a",
       "size_kb": 35.23
     },
     "awg.json.gz": {
       "count": 29533,
-      "checksum": "sha256:d9f49becb1cdfc6773a3a1cabe60f23a1b19190b15dee1cfa8db2eb0ce6061e9",
+      "checksum": "sha256:3111fd051e9d5ad562cd6edf1d08b47c810346ce0305d1d45506f3f72c857bdc",
       "size_kb": 17.59
     },
     "awg_aufwand.json.gz": {
       "count": 37996,
-      "checksum": "sha256:04d28ad6ccc1007439ddd1c549dea6ade0260b32c42a8e6be3ad0f49274d84ab",
+      "checksum": "sha256:0c164adb8e53141947d07d715fb6b9a42b2b6024a638f8de5dca8f45fa6a0daa",
       "size_kb": 15.74
     },
     "awg_kultur.json.gz": {
       "count": 40710,
-      "checksum": "sha256:82c10a5fa725648cc128f20cab4d790464745bcc047f109ee7adb22f25319881",
+      "checksum": "sha256:27208c550c77a5cd37d9c42d04ed0f0cdd7f234dea13e544cd67890a0560bdd9",
       "size_kb": 9.95
     },
     "awg_schadorg.json.gz": {
       "count": 44883,
-      "checksum": "sha256:c1335b43b0439059b9c4e8665e7bacb0c187638e05000ed0a54da84af2d847f9",
+      "checksum": "sha256:bc8f2eb1fd3d4eda332acbd21f5bfc1220da2aa0284fe2e59a3f33bb83e377de",
       "size_kb": 7.62
     },
     "awg_wartezeit.json.gz": {
       "count": 39883,
-      "checksum": "sha256:3af873c551bdb906959b463014c4e8ff1b1c8143ff3bb0ad5e5d968379d68a79",
+      "checksum": "sha256:ea01eb09ca6cdbc059a426d6016569c12b0f928981a069b8b7b3c59ed1e616fe",
       "size_kb": 13.99
     },
     "awg_zulassung.json.gz": {
       "count": 29533,
-      "checksum": "sha256:6e8cd2a67eb1b4d73c753d21d2115908e67ae4d41e733b4e34f8c58f1976ba66",
+      "checksum": "sha256:57c57f4c47dcd81e2b2d687be93e85b57fd2e9542fac992016d0debe676500a1",
       "size_kb": 8.91
     },
     "ghs_gefahrenhinweise.json.gz": {
       "count": 8617,
-      "checksum": "sha256:4bcb1b75b22cc70804162db601f5c15fa165353e530d497c78eaa59d88ac9733",
+      "checksum": "sha256:5c3ec14c325a1c0d08041d9288f4bd9af3a72e73eed7af24c7b5472825b85df3",
       "size_kb": 1.28
     },
     "ghs_gefahrensymbole.json.gz": {
       "count": 3354,
-      "checksum": "sha256:2f8e5021164a1a6e91f9e57d8c0234cffe737d574276278d65913eaf3de2eeee",
+      "checksum": "sha256:548cb6c4af4e6e9eb587352b53b2684085e08095b77eeba6b9fc09047db305aa",
       "size_kb": 0.61
     },
     "ghs_sicherheitshinweise.json.gz": {
       "count": 12341,
-      "checksum": "sha256:2a382ce95f960f85073e7aafd2d0f00fd022efadf7096009d7960647659e12f0",
+      "checksum": "sha256:a67349592d757bacf9c06d40baf943d1fea5c57a551b289c1bced8b824fe5722",
       "size_kb": 0.91
     },
     "hinweis.json.gz": {
       "count": 4955,
-      "checksum": "sha256:8f78b8a8b7daa33046fa14b55d60974f4be3a4053efa5996d4e6ce32c846e265",
+      "checksum": "sha256:d6de22cccc8fd10a3f1fc9be58b132bfa83da2d0484cf897c85e446cfa34cae6",
       "size_kb": 0.91
     },
     "kode.json.gz": {
       "count": 30693,
-      "checksum": "sha256:57c93b12acb785e2ac32c10ceb9b4205f2d7e997fe98f609142a45a3e9b4e692",
+      "checksum": "sha256:0cc69c1810de47097c583350c68ff35b3d244c5c657502db77e80b4ea5235a1f",
       "size_kb": 8.03
     },
     "kodeliste.json.gz": {
       "count": 62,
-      "checksum": "sha256:ef269a91366a5223d3a21da9f0ace39969098b185b2a1655fcd6f70a69c7c379",
+      "checksum": "sha256:db98e987dd7ae01b3fbc7fc65ad23cc05f3dcbc05b078afe3c949f53d98e39ed",
       "size_kb": 0.1
     },
     "kultur_gruppe.json.gz": {
       "count": 992,
-      "checksum": "sha256:eefc176997d2571b8f3251423286e0b4f56bf80fb32ea92304f7db7b04c169cd",
+      "checksum": "sha256:76679516d385a54c6a18d1cb39dbcb302ca8bb599e291649f3e9d1fb34c68be6",
       "size_kb": 0.36
     },
     "mittel.json.gz": {
       "count": 2100,
-      "checksum": "sha256:d0af738b69ef6563bec52383afbe83f10d9773273c3bfb4260632724befe221a",
+      "checksum": "sha256:b93d4c72552d3ea245c74234dd82cee5249090b8623abd63f537fbe8f3759208",
       "size_kb": 1.47
     },
     "mittel_abgelaufen.json.gz": {
       "count": 3357,
-      "checksum": "sha256:a7d1906029ecbff91f7449ad48d474ac4b433cda28a4c7e2dfd87f015a0f4fd6",
+      "checksum": "sha256:7c9419175ceaaed53754df15e786493c7960d54679158c02dd6770e0267711cb",
       "size_kb": 2.24
     },
     "mittel_gefahren_symbol.json.gz": {
       "count": 711,
-      "checksum": "sha256:c73f6648341eef9932d1f44ee7db093a478bcd059cdea6bc9d54861c8e829df5",
+      "checksum": "sha256:5341b39721e2f0120ce17d5a3fc339413569f41146e85a0e46cf7d2fc9123570",
       "size_kb": 0.22
     },
     "mittel_vertrieb.json.gz": {
       "count": 1757,
-      "checksum": "sha256:4c616db868538029eb1e1c53c14afc30750d8bfc79ce0fe98b9fc63116fca782",
+      "checksum": "sha256:653b3a1cc3b70aabe81d70678420b98cd5fb3287f98278015561a96d9947405f",
       "size_kb": 0.36
     },
     "schadorg_gruppe.json.gz": {
       "count": 1801,
-      "checksum": "sha256:df8f44f9f3728010f2340a6638cfc6d374c839c18fa426d43929d97784ffae7a",
+      "checksum": "sha256:82b6544042c76a930825f5df9ae6486b61977a866650f8e7c551f34ef04c39e5",
       "size_kb": 0.61
     },
     "staerkung.json.gz": {
       "count": 371,
-      "checksum": "sha256:8ad6e3f434efd661f2c4c00859c74e6da6157c1b5da8c88af672d1aae74ab695",
+      "checksum": "sha256:8a6b1a398e47949cbcbde32e89c7d3339f20ba606ad4128b23e1654c3068fcc0",
       "size_kb": 0.28
     },
     "stand.json.gz": {
       "count": 1,
-      "checksum": "sha256:3914974d5541d5a21072f1ebd476f90ab70d7d1b84b074c8ebc58e87c73e929c",
+      "checksum": "sha256:20d94ce6fbc0e7e616a33139eb57ae6192b29e15c5ceee840f6fd3a4a28562bd",
       "size_kb": 0.07
     },
     "wirkstoff.json.gz": {
       "count": 479,
-      "checksum": "sha256:abff698c0c9765d908b58b5ca2c5c7d66efabc6b12c7571e775c79e7b8ada657",
+      "checksum": "sha256:c00c415b99a9e8b73b56de8c2005ac721e9b015bd7787eec985a661270a28e5d",
       "size_kb": 0.27
     },
     "wirkstoff_gehalt.json.gz": {
       "count": 5688,
-      "checksum": "sha256:44848b5ab638347ff4bdac017a934f98f746176527cee7626f004c8f41a4f4d8",
+      "checksum": "sha256:c21f26f28fa04e454986fccc25ffabdecee45abbb3355418b0d76cd4f4156cae",
       "size_kb": 1.79
     },
     "zusatzstoff.json.gz": {
       "count": 576,
-      "checksum": "sha256:4b28db067593de0c9d59f77e00b83684aae4bc6ce8a952a25bb31e9106ba9aba",
+      "checksum": "sha256:48f017928acb4fdd8b2241334dc6b7bf78aa79d933effc4964b1bb01585c3815",
       "size_kb": 0.37
     }
   }
